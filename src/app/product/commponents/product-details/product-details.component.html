@@ -1,0 +1,110 @@
+<div class="my-container mx-auto border border-dark">
+<div class="row g-0 ">
+
+<div class="col-4">
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/{{imageIndex}}.jpg" alt="" class="w-100">
+  </div>
+  <div class="img-thumbnail d-flex justify-content-between align-items-center mt-4">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="" (click)="imageIndex=1">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/2.jpg" alt="" (click)="imageIndex=2">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/3.jpg" alt="" (click)="imageIndex=3">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/4.jpg" alt="" (click)="imageIndex=4">
+    <img src="../../../../assets/images/{{product.productCategory.subCategory}}/{{product.id}}/5.jpg" alt="" (click)="imageIndex=5">
+  </div>
+</div><!--End of Profile Images-->
+
+<div class="col-8">
+ <div class="card">
+  <div class="card-header">
+<h1 class="text-primary">{{product.productCategory.subCategory}}</h1>
+  </div>
+
+  <div class="card-body">
+  <h5>{{product.title}}</h5>
+ <h1 class="card-title text-success"> {{finalPrice(product.price , product.offer.discount)}}
+<span class="text-primary">-{{ product.offer.discount}}%</span></h1>
+<h4 class="card-subtitle text-danger text-decoration-line-through">
+{{ product.price}}
+</h4>
+
+</div>
+
+  <div class="card-body">
+    <h6 class="card-subtitle my-2 text-primary "> {{ product.quantity}} Products are avaibles</h6>
+    <div class="d-grid gap-2">
+      <button class="btn btn-outline-success">Add To Cart</button>
+    </div>
+  </div>
+
+
+  <div class="card-body">
+   <h5 class="card-text" Descripation></h5>
+   <ul class="list-group">
+      <li class="list-group-item list-group-item-action" *ngFor="let item of product.description.split('.')">{{item}}</li>
+   </ul>
+  </div>
+
+
+ </div>
+</div>
+</div><!--End Of Detials Of Product-->
+
+<!--Suggested Product -->
+<div class="row g-0 ">
+<div class="col-12 ps-5 pt-4 pb-3">
+<h3 class="border border-secondary text-center py-2 my-rounded-corner w-25">
+Related Products
+</h3></div>
+<div class="col-12">
+  <app-suggested-product [category]="product.productCategory" [count]="4"></app-suggested-product>
+</div>
+
+</div>
+
+<!--Review-->
+<div class="row g-0 my-5">
+  <!--User Review-->
+  <div class="col p-3">
+    <h3>Give Your Review</h3>
+    <h5 class="mt-5">Write Your Review</h5>
+    <textarea class="w-75 p-2" [formControl]="reviewControl"></textarea>
+    <div class="d-flex align-items-start ">
+      <button class="btn btn-outline-secondary mt-4 me-5 " (click)="submitReview()">Save Review</button>
+      <div>
+        <h6 class="text-danger mt-4" *ngIf="!utilityService.isLoggedIn()">Login first , then enter the review</h6>
+        <h6 class="text-danger " *ngIf="reviewError">Review Cannot Be Empty</h6>
+        <h6 class="text-success " *ngIf="reviewSaved">Review Saved Successfully</h6>
+      </div>
+    </div>
+  </div>
+<!--Other Review-->
+  <div class="col p-3">
+    <h3>Other Reviews</h3>
+    <h6 *ngIf="1">No Review Yet!</h6>
+    <div class="card mt-3" *ngFor="let item of otherReviews">
+      <div class="card-header d-flex justify-content-between">
+        <div class="card-text">
+         {{item.user.firstName}}
+         {{item.user.lastName}}
+        </div>
+        <div class="card-text fst-italic">Reviewed On:
+          <span class="fw-bold">{{item.createdAt | date : "dd-MM-yyyy"}}</span> </div>
+
+
+      </div>
+
+      <div class="card-body">
+        <div class="card-text">
+          {{item.value}}
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+</div>

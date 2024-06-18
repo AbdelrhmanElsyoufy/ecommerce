@@ -1,0 +1,6 @@
+<div class="container-fluid d-flex justify-content-around align-items-center" >
+  <div class="row g-5">
+    <div class="col-3" *ngFor="let prd of products">
+    <app-product  [currentProduct]="prd" [view]="'grid'"></app-product>
+    </div>
+</div>

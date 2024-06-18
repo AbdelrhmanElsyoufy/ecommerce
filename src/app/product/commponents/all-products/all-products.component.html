@@ -1,0 +1,73 @@
+<!-- <section style="background-color: #fff;">
+  <div class="container py-5">
+   <div class="m-3 form-group">
+    <label class="font-weight-bold mb-2 " style="font-size: 23px;">category :</label>
+    <select class="form-select w-25 " style="font-size: 20px;" (change)="filterByCategory($event)">
+      <option style="font-size: 20px;">All</option>
+      <option *ngFor="let cat of categories" style="font-size: 20px;">{{cat}}</option>
+
+    </select>
+   </div>
+
+
+
+  </div>
+</section> -->
+
+
+
+<!-- <div class="mt-5"></div>
+<app-home></app-home> -->
+
+
+
+
+
+
+
+
+
+<div class="mt-5"></div>
+<div class="my-container border border-dark">
+<div class="border mb-3 p-3 d-flex justify-content-around">
+  <div class="btn-group">
+    <button class="btn btn-outline-secondary" (click)="view = 'grid'"
+     [class.active]="view == 'grid'">Grid</button>
+    <button class="btn btn-outline-secondary"  (click)="view = 'list'"
+    [class.active]="view == 'list'" >List</button>
+    </div>
+
+    <div class="w-50 d-flex">
+      <span class="me-5 d-flex align-items-center fs-5 fw-bold">Sort By</span>
+      <div class="btn-group" role="group" >
+        <button type="button" class="btn btn-outline-secondary" (click)="sortBy = 'default'; sortProducts(sortBy)"
+        [class.active]="sortBy == 'default'">Default</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="sortBy = 'htl' ; sortProducts(sortBy)"
+        [class.active]="sortBy == 'htl'">Price(High to Low)</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="sortBy = 'lth' ; sortProducts(sortBy)"
+         [class.active]="sortBy == 'lth'">Price(Low to High )</button>
+      </div>
+
+    </div>
+</div>
+
+<div class="border p-5">
+    <!---Grid View-->
+<div *ngIf="view == 'grid'" class="grid-view">
+<div class="row g-5">
+<div class="col-3" *ngFor="let prd of products">
+<app-product  [currentProduct]="prd" [view]="view"></app-product>
+</div>
+</div>
+</div>
+
+    <!---list View-->
+    <div *ngIf="view == 'list'" class="list-view ">
+      <div class="row g-5"  *ngFor="let prd of products">
+      <div class="col d-flex flex-column "  >
+      <app-product  [currentProduct]="prd" [view]="view" ></app-product>
+      </div>
+      </div>
+      </div>
+</div>
+</div>

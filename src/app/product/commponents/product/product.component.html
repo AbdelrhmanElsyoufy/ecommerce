@@ -1,0 +1,136 @@
+
+
+
+<div class="grid-view" *ngIf="view==='grid'">
+  <div class="card text-center ">
+    <div class="card-header fw-bold fs-5 text-primary">{{currentProduct.productCategory.subCategory}}</div>
+
+    <div class="overflow-hidden d-flex justify-content-center align-content-center">
+    <img src="../../../../assets/images/{{currentProduct.productCategory.subCategory}}/{{currentProduct.id}}/1.jpg"
+    class="card-img-top" alt="" appNavToProductDetails  [productId]="currentProduct.id"/>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title title">{{currentProduct.title}}</h5>
+      <p class="card-subtitle my-2 text-primary">{{currentProduct.quantity}} Products are available</p>
+      <p class="card-text descripation ">{{currentProduct.description}}</p>
+    </div>
+
+
+    <div class="card-body">
+      <h5 class="card-title text-success">
+       {{finalPrice(currentProduct.price , currentProduct.offer.discount)}}
+         <span class="text-primary">-{{currentProduct.offer.discount}}%</span>
+       </h5>
+      <h6 class="card-subtitle my-2 text-danger text-decoration-line-through">Original Price {{currentProduct.price}}</h6>
+    </div>
+
+    <div class="card-footer d-grid gap-2">
+     <button class="btn btn-outline-primary" type="button">Add To Cert</button>
+    </div>
+  </div>
+ </div>
+
+
+  <div class="list-view mt-3" *ngIf="view === 'list'">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-4 overflow-hidden d-flex justify-content-center align-content-center">
+          <img src="../../../../assets/images/{{currentProduct.productCategory.subCategory}}/{{currentProduct.id}}/1.jpg"
+          class="img-fluid rounded-start" alt="notfound"  appNavToProductDetails  [productId]="currentProduct.id"/>
+          </div>
+       <div class="col">
+        <div class="card-header text-center fw-bold fs-5 text-primary">{{currentProduct.productCategory.subCategory}}</div>
+
+
+
+      <div class="card-body">
+        <h5 class="card-title title">{{currentProduct.title}}</h5>
+        <p class="card-subtitle my-2 text-primary">{{currentProduct.quantity}} Products are availble</p>
+        <p class="card-text descripation">{{currentProduct.description}}</p>
+      </div>
+
+
+      <div class="card-body">
+        <h4 class="card-title text-muted">Priceing</h4>
+        <h2 class="card-title text-success">
+          {{finalPrice(currentProduct.price , currentProduct.offer.discount)}}
+           <span class="text-primary">-{{currentProduct.offer.discount}}%</span>
+         </h2>
+        <h6 class="card-subtitle my-2 text-danger text-decoration-line-through">{{currentProduct.price}}</h6>
+      </div>
+
+
+
+      <div class="card-footer d-grid gap-2 ">
+       <button class="btn btn-outline-primary" type="button">Add To Cert</button>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- Cart Item View -->
+<div class="cart-item-view" *ngIf="view === 'currcartitem'">
+  <div class="card">
+      <div class="row g-0">
+
+          <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
+              <img src="../../../../assets/images/mobiles/10/1.jpg"
+                   class="img-fluid rounded-start" alt="Product Image"  >
+          </div>
+          <div class="col-8">
+              <div class="card-body">
+                  <h5 class="card-title title"> card  title </h5>
+                  <h5 class="card-title text-success">
+                     Final Price
+
+                  </h5>
+                  <h6 class="card-subtitle text-danger text-decoration-line-through">
+                     Original Price
+                  </h6>
+                  <h6 class="card-subtitle text-primary ">
+                    11 Products are availble
+                 </h6>
+              </div>
+              <div class="card-footer text-muted d-grid gap-2">
+                <button class="btn btn-outline-danger">Remove From Cart </button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="cart-item-view" *ngIf="view === 'prevcartitem'">
+  <div class="card text-center">
+
+      <div class="overflow-hidden d-flex justify-content-center align-items-center">
+          <img src="../../../../assets/images/mobiles/7/1.jpg" alt=""
+               class="card-img-top" OpenProductDetails >
+      </div>
+
+      <div class="card-body">
+          <h5 class="card-title title"> Title </h5>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
